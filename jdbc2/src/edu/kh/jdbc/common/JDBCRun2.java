@@ -32,7 +32,7 @@ public class JDBCRun2 {
 			int result = dao.insertDepartment(dept);
 			
 			if (result > 0) {
-				System.out.print("[삽입 성공]");
+				System.out.print("[삽입 성공] \n");
 				
 				
 				// 2. 부서 전체 조회
