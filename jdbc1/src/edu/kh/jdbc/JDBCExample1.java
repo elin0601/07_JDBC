@@ -11,7 +11,7 @@ public class JDBCExample1 {
 
 	public static void main(String[] args) {
 		
-		/* JDBC(Java DataBase connectivity)
+		/* JDBC(Java DataBase Connectivity)
 		 * - Java에서 DB에 접근할 수 있게 해주는
 		 * 	 Java 제공 코드(class, interface)
 		 *   -> java.sql 패키지에 존재

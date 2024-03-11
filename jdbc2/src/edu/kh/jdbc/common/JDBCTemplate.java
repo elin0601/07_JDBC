@@ -47,7 +47,7 @@ public class JDBCTemplate {
 				
 				Properties prop = new Properties();				
 				// Properties 
-				// - K:V 모두String인 Map
+				// - K:V 모두 String인 Map
 				// - 파일 입출력하기 편리한 기능을 제공
 				
 
