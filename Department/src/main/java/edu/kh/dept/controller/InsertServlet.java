@@ -2,6 +2,8 @@ package edu.kh.dept.controller;
 
 import java.io.IOException;
 
+import edu.kh.dept.model.dto.Department;
+import edu.kh.dept.model.exception.DepartmentInsertException;
 import edu.kh.dept.model.service.DepartmentService;
 import edu.kh.dept.model.service.DepartmentServiceImpl;
 import jakarta.servlet.ServletException;
@@ -9,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/department/insert")
 public class InsertServlet extends HttpServlet {
@@ -55,10 +58,47 @@ public class InsertServlet extends HttpServlet {
 			 * <-> DB
 			 */
 			
-
+			// 부서 추가 서비스 호출 후 결과 반환 받기
+			Department dept = new Department(deptId, deptTitle, locationId);
+			
+			int result = service.insertDepartment(dept);
+			
+			String message = null; // 응답 화면에서 alert()로 출력할 내용
+			
+			// Session : 브라우저당 1개씩 생성
+			// 클라이언트 접속 시 1개 생성, 
+			// 브라우저 닫거나 만료되었을 때 소멸
+			HttpSession session = req.getSession();
+			
+			if (result > 0) message = "부서 추가 성공!!";
+			else message = "부서 추가 실패..";
+			
+			// 추가 동작 후 모든 부서 조회하는 Servlet 재요청(redirect)
+			// -> redirect 재요청 -> request 객체가 다시 만들어진다
+			// 										== 기존 request 객체가 사라짐!!
+			// -> 그래서 redirect 시 데이터를 전달하고 싶으면
+			// 		request가 아니라 session에 담아서 전달해야 한다!!
+			
+			 session.setAttribute("message", message);
+			 
+			 // 모든 부서 조회 페이지 재요청
+			 resp.sendRedirect("/department/selectAll");
+			 			
+		} catch(DepartmentInsertException e) {
+			// 제약조건 위배로 삽입 실패 예외가 발생한 경우
+			
+			// request scope 객체에 에러 메세지 세팅
+			req.setAttribute("errorMessage", e.getMessage());
+			
+			// 에러 페이지로 forward
+			String path = "/WEB-INF/views/error.jsp";			
+			req.getRequestDispatcher(path).forward(req, resp);
+			
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+
 		}
 		
 	}
