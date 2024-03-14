@@ -158,20 +158,15 @@ public class DepartmentServiceImpl implements DepartmentService{
 	public int deleteDepartment(String deptId) throws SQLException {
 		int result = 0;
 		
-		Connection conn = getConnection();
-	
-		try {
+		Connection conn = getConnection();	
+		
 			result = dao.deleteDepartment(conn, deptId);
-			
-			
+					
 			if(result > 0) commit(conn);
 			else rollback(conn);
 			
-		} finally {
+			close(conn);
 			
-		}
-	
-		
 		return result;
 
 	}

@@ -15,10 +15,11 @@
 	
 	</entry>
 	
- <entry key = "deleteDepartment">
- 	DELETE FROM DEPARTMENT4 
- 	WHERE DEPT_ID = ?
- </entry>
+	<!-- 부서 삭제 -->
+	 <entry key = "deleteDepartment">
+	 	DELETE FROM DEPARTMENT4 
+	 	WHERE DEPT_ID = ?
+	 </entry>
 	
 	
 

@@ -131,7 +131,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 			result = pstmt.executeUpdate();
 
 		} finally {
-			close(conn);
+			close(pstmt);
 
 		}
 
