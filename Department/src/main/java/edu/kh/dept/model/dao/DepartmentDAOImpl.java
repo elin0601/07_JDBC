@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;import org.eclipse.jdt.internal.compiler.tool.EclipseBatchRequestor;
+import java.util.Properties;
 
 import edu.kh.dept.common.JDBCTemplate;
 import edu.kh.dept.model.dto.Department;
@@ -228,9 +228,9 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 			}
 			
 			
-		} catch (Exception e ) {
-			
-			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
 		}
 		return deptList;
 	}
