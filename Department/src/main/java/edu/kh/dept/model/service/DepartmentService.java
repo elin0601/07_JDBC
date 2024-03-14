@@ -39,6 +39,21 @@ public interface DepartmentService {
 	 */
 	int deleteDepartment(String deptId) throws SQLException;
 
+	
+	/** 부서 1행 조회
+	 * @param deptId
+	 * @return dept(부서 1행 데이터가 담긴 객체)
+	 * @throws SQLException
+	 */
+	Department selectOne(String deptId) throws SQLException;
+
+	
+	/** 부서 수정
+	 * @param dept
+	 * @return (삽입된 행의 개수)
+	 */
+	int updateDepartment(Department dept) throws SQLException;
+
 }
 
 

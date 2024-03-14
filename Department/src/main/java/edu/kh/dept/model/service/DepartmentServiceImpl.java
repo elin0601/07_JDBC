@@ -170,5 +170,47 @@ public class DepartmentServiceImpl implements DepartmentService{
 		return result;
 
 	}
+	
+	
+	// 부서 1행 조회
+	@Override
+	public Department selectOne(String deptId) throws SQLException {
+		
+		// 1. 커넥션 얻어오기
+		Connection conn = getConnection();
+		
+		// 2. DAO 메서드 호출 후 결과 반환
+		Department dept = dao.selectOne(conn, deptId);
+		
+		// 3. 커넥션 반환
+		close(conn);
+		
+		// 4. 결과 반환
+		return dept;
+	}
+	
+	
+	// 부서 수정
+	@Override
+	public int updateDepartment(Department dept) throws SQLException {
+		int result = 0;
+		
+		Connection conn = getConnection();
+		
+		try {
+		
+			result = dao.updateDepartment(conn, dept);
+			
+			if(result > 0) commit(conn);
+			else rollback(conn);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(conn);
+		}
+		return result;
+	}
 
 }

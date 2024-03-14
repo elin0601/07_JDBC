@@ -64,4 +64,26 @@ for(let btn of deleteBtnList) { // 향상된 for문
         }
     });
 
-}
+};
+
+
+// .update-btn 모두 얻어와 배열로 반환 받기
+const updateBtnList = document.querySelectorAll(".update-btn");
+
+// updateBTn 배열의 모든 요소에 순차 접근하며 이벤트 리스너 추가
+
+updateBtnList.forEach( (btn, index) =>{
+    btn.addEventListener("click", e => {
+
+        //const tr = e.target.parentelement.parentelement;
+        const tr = e.target.closest("tr");
+
+        const deptId = tr.children[1].innerText;
+
+        // JS에서 이용해서 요청하기 (GET 방식)
+        location.href = "/department/update?deptId=" + deptId;
+
+    });
+
+
+});
