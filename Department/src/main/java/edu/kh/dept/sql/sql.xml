@@ -15,6 +15,11 @@
 	
 	</entry>
 	
+ <entry key = "deleteDepartment">
+ 	DELETE FROM DEPARTMENT4 
+ 	WHERE DEPT_ID = ?
+ </entry>
+	
 	
 
 </properties>

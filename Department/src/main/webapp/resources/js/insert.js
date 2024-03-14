@@ -27,7 +27,7 @@ addBtb.addEventListener("click", () => {
     }
     
 
-    // 규칙성이 어듯난 th>button 따로 만들기
+    // 규칙성이 어긋난 th>button 따로 만들기
     const th = document.createElement("th");
     const button = document.createElement("button");
 

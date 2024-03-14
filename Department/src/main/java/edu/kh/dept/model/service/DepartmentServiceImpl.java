@@ -50,7 +50,7 @@ public class DepartmentServiceImpl implements DepartmentService{
 	@Override
 	public int insertDepartment(Department dept) throws DepartmentInsertException {
 		
-		int result = 0;  // 결과 저장 변
+		int result = 0;  // 결과 저장 변수
 	
 		// 1. Connection 얻어 오기
 		Connection conn = getConnection();
@@ -85,6 +85,93 @@ public class DepartmentServiceImpl implements DepartmentService{
 			close(conn);
 			
 		}
+		
+		return result;
+	}
+
+
+	// 여러 부서 추가
+	@Override
+	public int multiInsert(List<Department> deptList) throws DepartmentInsertException {
+		
+		int result = 0;
+		
+		String currentDeptId = null;// 현재 삽입하려는 부서 코드를 저장하는 변수
+		
+		
+		// 1. Connection 얻어어기
+		Connection conn = getConnection();
+		
+		try {
+			
+			// 2. 전달 받은 deptList의 크기(길이) 만큼 반복하며
+			// DB에 INSERT 하는 DAO 메서드 호출
+			
+			for (Department dept : deptList) {
+				 
+				currentDeptId = dept.getDeptId(); // 삽입할 deptId를 변수에 저장
+				
+				result += dao.insertDepartment(conn, dept);
+				
+			}
+			
+			// 3. 트랜젝션 제어 처리
+			// result에 누적된 값(== 삽입 성공한 행의 개수)
+			// deptList의 길이가 같은 경우
+			// == 모두 삽입 성공한 경우 -> commit
+			
+			// result != deptList의 길이
+			// == 삽입 실패한 경우가 존제 -> rollback
+			
+			if(result == deptList.size()) commit(conn);
+			else rollback(conn);
+			
+			
+		} catch (SQLException e) {
+			
+			// 4. SQL 수행 중 오류 발생 시
+			// (PK, NOT NULL 제약조건 위배, 데이터 크기 초과, DB 연결 종료...)
+			
+			e.printStackTrace();
+			
+			rollback(conn); // SQL이 하나라도 실패하면 전체 rollback
+			
+			// 예외가 발생이 되었음을 Controller(Servlet)에 전달하기
+			// -> 사용자 정의 예외 강제 발생
+			
+			// (PK 제약조건 위배만 생각하고 코드 작성)
+			throw new DepartmentInsertException(currentDeptId + "부서 코드가 이미 존재합니다");
+
+		} finally {
+			
+			// 5. 사용 완료된 커넥션 반환
+			close(conn);
+		}
+				
+		// 6. 결과 반환
+		return result;
+	}
+
+
+	@Override
+	public int deleteDepartment(Department dept) throws SQLException {
+		
+		int result = 0;
+		
+		Connection conn = getConnection();
+	
+		try {
+			result = dao.deleteDepartment(conn, dept);
+			
+			
+			if(result > 0) commit(conn);
+			else rollback(conn);
+			
+		} finally {
+			
+		}
+			
+			
 		
 		return result;
 	}

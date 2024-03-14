@@ -52,7 +52,7 @@ public class InsertServlet extends HttpServlet {
 			
 			// Dynamic Web Project 기본 요청/응답 흐름
 			/* 클라이언트 요청
-			 * -> Controller(Servlet, 요청에 따른 응답 화면 제어) 
+			 * ->  Controller(Servlet, 요청에 따른 응답 화면 제어) 
 			 * <-> Service(비지니스 로직 처리)
 			 * <-> DAO(DB 연결 객체
 			 * <-> DB

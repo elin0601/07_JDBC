@@ -23,6 +23,8 @@ public interface DepartmentDAO {
 	 */
 	int insertDepartment(Connection conn, Department dept) throws SQLException;
 
+	int deleteDepartment(Connection conn, Department dept) throws SQLException;
+
 	
 	
 }

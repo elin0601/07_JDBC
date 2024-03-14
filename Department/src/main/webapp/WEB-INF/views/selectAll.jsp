@@ -21,7 +21,10 @@
 				<th>행 번호</th>
 				<th>부서 코드(DEPT_ID)</th>
 				<th>부서 명(DEPT_TITLE)</th>
-				<th>지역 코드(LOCATION_ID)</th>			
+				<th>지역 코드(LOCATION_ID)</th>	
+
+				<th>수정 버튼</th>		
+				<th>삭제 버튼</th>		
 			</tr>		
 		</thead>
 		
@@ -34,12 +37,19 @@
 					<td>${dept.deptId}</td>
 					<td>${dept.deptTitle}</td>
 					<td>${dept.locationId}</td>
+
+					<th>
+						<button type = "button" class = "update-btn">수정</button>
+					</th>
+					
+					<th>
+						<button type = "button" class = "delete-btn">삭제</button>
+					</th>
+
 				</tr>
 				
-			</c:forEach>
-		
-		</tbody>
-	
+			</c:forEach>		
+		</tbody>	
 	</table>
 
 
@@ -63,6 +73,8 @@
 		<c:remove var="message" scope="session" />
 
 	</c:if>
+
+	<script src = "/resources/js/selectAll.js"></script> 
 
 </body>
 </html>
