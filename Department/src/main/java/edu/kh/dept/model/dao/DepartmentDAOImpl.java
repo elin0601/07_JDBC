@@ -47,40 +47,39 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 	// 부서 전체 조회
 	@Override
 	public List<Department> selectAll(Connection conn) throws SQLException {
-		
+
 		// 결과 저장용 변수 선언 / 객체 생성
 		List<Department> deptList = new ArrayList<Department>();
-		
+
 		try {
 			// SQL 작성
 			String sql = prop.getProperty("selectAll");
-			
-			
+
 			// Statement 객체 생성
 			stmt = conn.createStatement();
-			
+
 			// SQL 수행 결과 (ResultSet) 반환 받기
 			rs = stmt.executeQuery(sql);
-			
+
 			// ResultSet 한 행 씩 접근해서 컬럼 값을 얻어온 후
 			// deptList에 옮겨 담기
-			
-			while(rs.next()) {
-			String deptId = rs.getString("DEPT_ID");
-			String deptTitle = rs.getString("DEPT_TITLE");
-			String locationId = rs.getString("LOCATION_ID");
-			
-			Department dept = new Department(deptId,deptTitle, locationId );
-			
-			deptList.add(dept);
-		}
-		
+
+			while (rs.next()) {
+				String deptId = rs.getString("DEPT_ID");
+				String deptTitle = rs.getString("DEPT_TITLE");
+				String locationId = rs.getString("LOCATION_ID");
+
+				Department dept = new Department(deptId, deptTitle, locationId);
+
+				deptList.add(dept);
+			}
+
 		} finally {
 			close(rs);
 			close(stmt);
 
 		}
-		
+
 		return deptList;
 	}
 
@@ -91,53 +90,52 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
 		// 1. 결과 저장 용 변수 선언 / 객체 생성
 		int result = 0;
-		
+
 		try {
 			// 2. SQL 얻어오기
 			String sql = prop.getProperty("insertDepartment");
-			
+
 			// 3. PreparedStatment 객체 생성 + SQL 적재
 			pstmt = conn.prepareStatement(sql);
-			
+
 			// 4. ?에 알맞은 값 대입
 			pstmt.setString(1, dept.getDeptId());
 			pstmt.setString(2, dept.getDeptTitle());
 			pstmt.setString(3, dept.getLocationId());
-			
+
 			// 5. SQL(INSERT) 실행 후 결과(삽입 성공한 행의 개수) 반환 받기
 			result = pstmt.executeUpdate();
-			
-			
+
 		} finally {
 			// 6. 사용한 JDBC 객체 자원 반환 (단, 커넥션 제외)
 			close(pstmt);
-			
+
 		}
-		
+
 		return result;
 	}
-	
+
+	// 부서 삭제
 	@Override
-	public int deleteDepartment(Connection conn, Department dept) throws SQLException {
-		
+	public int deleteDepartment(Connection conn, String deptId) throws SQLException {
+
 		int result = 0;
-		
+
 		try {
 			String sql = prop.getProperty("deleteDepartment");
-			
+
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, dept.getDeptId());
-			
+
+			pstmt.setString(1, deptId);
+
 			result = pstmt.executeUpdate();
-			
+
 		} finally {
-			
 			close(conn);
-			
+
 		}
-			
+
 		return result;
 	}
-	
+
 }

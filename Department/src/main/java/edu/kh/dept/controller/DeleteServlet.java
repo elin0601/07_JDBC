@@ -2,7 +2,6 @@ package edu.kh.dept.controller;
 
 import java.io.IOException;
 
-import edu.kh.dept.model.dto.Department;
 import edu.kh.dept.model.service.DepartmentService;
 import edu.kh.dept.model.service.DepartmentServiceImpl;
 import jakarta.servlet.ServletException;
@@ -27,8 +26,7 @@ public class DeleteServlet extends HttpServlet{
 			String deptId = req.getParameter("deptId"); // 삭제할 부서코드
 			
 			// 서비스 메서드 호출 후 결과 반환 받기
-			Department dept =  new Department(deptId, deptId, deptId);
-			int result = service.deleteDepartment(dept);
+			int result = service.deleteDepartment(deptId);
 			
 			
 			
@@ -47,8 +45,7 @@ public class DeleteServlet extends HttpServlet{
 			resp.sendRedirect("/department/selectAll");
 			
 		} catch (Exception e) {
-			e.printStackTrace();
-			
+			e.printStackTrace();	
 			
 		}
 	}

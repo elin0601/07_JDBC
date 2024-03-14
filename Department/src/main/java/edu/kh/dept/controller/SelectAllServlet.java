@@ -47,9 +47,5 @@ public class SelectAllServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		
 	}
-	
-	
-	
 }

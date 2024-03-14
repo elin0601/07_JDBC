@@ -31,10 +31,14 @@ public interface DepartmentService {
 	 */
 	int multiInsert(List<Department> deptList) throws DepartmentInsertException;
 
-	int deleteDepartment(Department dept) throws SQLException;
-	
-	
-	
+
+	/** 부서 삭제
+	 * @param deptId
+	 * @return result(삽입된 행의 개수)
+	 * @throws SQLException
+	 */
+	int deleteDepartment(String deptId) throws SQLException;
+
 }
 
 

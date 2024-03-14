@@ -153,15 +153,15 @@ public class DepartmentServiceImpl implements DepartmentService{
 	}
 
 
+	// 부서 삭제
 	@Override
-	public int deleteDepartment(Department dept) throws SQLException {
-		
+	public int deleteDepartment(String deptId) throws SQLException {
 		int result = 0;
 		
 		Connection conn = getConnection();
 	
 		try {
-			result = dao.deleteDepartment(conn, dept);
+			result = dao.deleteDepartment(conn, deptId);
 			
 			
 			if(result > 0) commit(conn);
@@ -170,10 +170,10 @@ public class DepartmentServiceImpl implements DepartmentService{
 		} finally {
 			
 		}
-			
-			
+	
 		
 		return result;
+
 	}
-	
+
 }
