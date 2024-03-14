@@ -193,23 +193,16 @@ public class DepartmentServiceImpl implements DepartmentService{
 	// 부서 수정
 	@Override
 	public int updateDepartment(Department dept) throws SQLException {
-		int result = 0;
-		
+
 		Connection conn = getConnection();
+	
+		int result  = dao.updateDepartment(conn, dept);
+			
+		if(result > 0) commit(conn);
+		else rollback(conn);
+			
+		close(conn);
 		
-		try {
-		
-			result = dao.updateDepartment(conn, dept);
-			
-			if(result > 0) commit(conn);
-			else rollback(conn);
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-			
-		} finally {
-			close(conn);
-		}
 		return result;
 	}
 

@@ -180,9 +180,11 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 	// 부서 수정
 	@Override
 	public int updateDepartment(Connection conn, Department dept) throws SQLException {
+		
 		int result = 0;
 		
 		try {
+			
 			String sql = prop.getProperty("updateDepartment");
 			
 			pstmt = conn.prepareStatement(sql);
@@ -192,7 +194,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 			
 			result = pstmt.executeUpdate();
 			
-		} finally {
+		} finally { // JDBC 객체 자원 무조건 반환 하려고 finally 구문 사용
 			close(pstmt);			
 		}
 

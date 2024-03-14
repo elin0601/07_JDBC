@@ -28,8 +28,8 @@
 	 </entry>
 	 
 	 <entry key = "updateDepartment">
-	 UPDATE DEPARTMENT4 SET DEPT_TITLE = ?, LOCATION_ID = ?
-	 WHERE DEPT_ID =?
+	  UPDATE DEPARTMENT4 SET DEPT_TITLE = ?, LOCATION_ID = ?
+	  WHERE DEPT_ID =?
 	 </entry>
 	
 	
