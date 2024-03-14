@@ -49,4 +49,6 @@ public interface DepartmentDAO {
 	 */
 	int updateDepartment(Connection conn, Department dept) throws SQLException;
 
+	List<Department> searchDepartment(Connection conn, String keyword) throws SQLException;
+
 }

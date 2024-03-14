@@ -31,6 +31,11 @@
 	  UPDATE DEPARTMENT4 SET DEPT_TITLE = ?, LOCATION_ID = ?
 	  WHERE DEPT_ID =?
 	 </entry>
+	 
+	 <entry key = "searchDepartment">
+	 	SELECT * FROM DEPARTMENT4
+	  WHERE DEPT_TITLE LIKE '%' || ? || '%'
+	 </entry>
 	
 	
 

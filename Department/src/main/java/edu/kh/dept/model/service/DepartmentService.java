@@ -54,6 +54,9 @@ public interface DepartmentService {
 	 */
 	int updateDepartment(Department dept) throws SQLException;
 
+	List<Department> searchDepartment(String keyword) throws SQLException;
+
+	
 }
 
 

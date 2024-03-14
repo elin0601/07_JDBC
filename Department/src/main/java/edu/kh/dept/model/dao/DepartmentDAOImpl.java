@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
+import java.util.Properties;import org.eclipse.jdt.internal.compiler.tool.EclipseBatchRequestor;
 
 import edu.kh.dept.common.JDBCTemplate;
 import edu.kh.dept.model.dto.Department;
@@ -150,7 +150,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 			String sql = prop.getProperty("selectOne");
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setNString(1, deptId);
+			pstmt.setString(1, deptId);
 			
 			// SQL (SELECT) 수행 후 결과 (REsultSet) 반환 받기
 			rs = pstmt.executeQuery();
@@ -199,5 +199,39 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 		}
 
 		return result;
+	}
+	
+	@Override
+	public List<Department> searchDepartment(Connection conn, String keyword) throws SQLException {
+		
+		List<Department> deptList = new ArrayList<Department>();
+
+		
+		try {
+			
+			String sql = prop.getProperty("searchDepartment");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, keyword);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				String deptId = rs.getString("DEPT_ID");
+				String deptTitle = rs.getString("DEPT_TITLE");
+				String locationId = rs.getString("LOCATION_ID");
+
+				Department dept = new Department(deptId, deptTitle, locationId);
+
+				deptList.add(dept);
+			}
+			
+			
+		} catch (Exception e ) {
+			
+			e.printStackTrace();
+		}
+		return deptList;
 	}
 }
