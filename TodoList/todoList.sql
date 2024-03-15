@@ -42,3 +42,15 @@ WHERE TODO_NO = 1;
 SELECT COUNT(*)
 FROM TB_TODO 
 WHERE COMPLETE ='Y';
+
+
+-- 특정 할 일의 완료 여부 수정
+UPDATE TB_TODO 
+SET COMPLETE ='Y'
+WHERE TODO_NO = 1;
+
+
+
+
+
+

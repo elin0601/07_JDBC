@@ -157,4 +157,24 @@ public class TodoDAOImpl implements TodoDAO {
 		return todo;
 	}
 	
+	@Override
+	public int changeComplete(Connection conn, int todoNo, String complete) throws SQLException {
+
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("changeTodo");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, complete);
+			pstmt.setInt(2, todoNo);
+			
+			result = pstmt.executeUpdate();
+				 	
+		} finally {			
+			close(pstmt);
+		}		
+		return result;
+	}
+	
 }

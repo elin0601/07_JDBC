@@ -25,4 +25,10 @@
 		WHERE TODO_NO = ?
 	</entry>
 	
+	<entry key="changeTodo">
+		UPDATE TB_TODO 
+		SET COMPLETE = ?
+		WHERE TODO_NO = ?
+	</entry>
+	
 </properties>

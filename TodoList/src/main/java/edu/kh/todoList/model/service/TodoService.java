@@ -28,4 +28,12 @@ public interface TodoService {
 	 */
 	Todo selectTodo(int todoNo) throws SQLException;
 
+	/**
+	 * @param todoNo
+	 * @param complete
+	 * @return
+	 * @throws SQLException
+	 */
+	int changeComplete(int todoNo, String complete) throws SQLException;
+
 }

@@ -1,0 +1,43 @@
+package edu.kh.todoList.controller;
+
+import java.io.IOException;
+
+import edu.kh.todoList.model.service.TodoService;
+import edu.kh.todoList.model.service.TodoServiceImpl;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+@WebServlet("/todo/changrComplete")
+public class ChangeCompleteServlet extends HttpServlet {
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		try {
+			TodoService service = new TodoServiceImpl();
+			
+			int todoNo = Integer.parseInt(req.getParameter("todoNo"));
+			String complete = req.getParameter("complete");
+			
+			int result = service.changeComplete(todoNo, complete);
+			
+			String message = null;
+			HttpSession session = req.getSession();
+			if(result > 0) message="변경 성공";
+			else message = "변경 실패";
+			
+			session.setAttribute("message", message);
+			
+			resp.sendRedirect("/todo/detail?todoNo=" + todoNo);
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}

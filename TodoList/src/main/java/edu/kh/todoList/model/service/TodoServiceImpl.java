@@ -80,4 +80,18 @@ public class TodoServiceImpl implements TodoService {
 		return todo;
 	}
 	
+	@Override
+	public int changeComplete(int todoNo, String complete) throws SQLException {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.changeComplete(conn, todoNo, complete);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
 }

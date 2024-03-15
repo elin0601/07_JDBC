@@ -43,5 +43,15 @@ public interface TodoDAO {
 	Todo selectTodo(Connection conn, int todoNo) throws SQLException;
 
 
+	/**
+	 * @param conn
+	 * @param todoNo
+	 * @param complete
+	 * @return
+	 * @throws SQLException
+	 */
+	int changeComplete(Connection conn, int todoNo, String complete) throws SQLException;
+
+
 
 }

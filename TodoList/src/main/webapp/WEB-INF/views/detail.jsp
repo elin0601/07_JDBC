@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -36,7 +38,14 @@
         <tr>
             <th>완료 여부</th>
             <td>
-                <button type="button" class = "complete-btn">${todo.complete}</button>
+            <%-- data-* 속성
+              - 데이터에 대한 확장성을 고려하여 설계된 속성
+              - js에서 요소.dataset 을 이용해 해당 값을 얻어갈 수 있음
+            --%>
+                <button type="button" 
+                        class = "complete-btn"
+                        data-todo-no="${todo.todoNo}"
+                        >${todo.complete}</button>
             </td>
         </tr>
 
@@ -50,6 +59,16 @@
     <button id="goToList">목록으로</button>
     <button id="udpateBtn">수정</button>
     <button id="deleteBtn">삭제</button>
+
+     <c:if test="${not empty message}" >
+        <script>
+            alert("${message}");
+        </script>
+
+        <c:remove var="message"/>
+    </c:if>
     
+
+    <script src="/resources/js/detail.js"></script>
 </body>
 </html>
