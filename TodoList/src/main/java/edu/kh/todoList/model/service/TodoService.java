@@ -28,12 +28,26 @@ public interface TodoService {
 	 */
 	Todo selectTodo(int todoNo) throws SQLException;
 
-	/**
+	/** 완료 여부 수정
 	 * @param todoNo
 	 * @param complete
-	 * @return
+	 * @return result
 	 * @throws SQLException
 	 */
 	int changeComplete(int todoNo, String complete) throws SQLException;
+
+	/** 할 일 수\정
+	 * @param todo
+	 * @return result
+	 * @throws SQLException
+	 */
+	int updateTodo(Todo todo) throws SQLException;
+
+	/** 할 일 삭제
+	 * @param todoNo
+	 * @return result
+	 * @throws SQLException
+	 */
+	int deleteTodo(int todoNo) throws SQLException;
 
 }

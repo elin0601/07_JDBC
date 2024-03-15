@@ -157,6 +157,7 @@ public class TodoDAOImpl implements TodoDAO {
 		return todo;
 	}
 	
+	// 완료 여부 수정
 	@Override
 	public int changeComplete(Connection conn, int todoNo, String complete) throws SQLException {
 
@@ -174,6 +175,49 @@ public class TodoDAOImpl implements TodoDAO {
 		} finally {			
 			close(pstmt);
 		}		
+		return result;
+	}
+	
+	// 할 일 수정
+	@Override
+	public int updateTodo(Connection conn, Todo todo) throws SQLException {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateTodo");
+			
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, todo.getTodoTitle());
+			pstmt.setString(2, todo.getTodoContent());
+			pstmt.setInt(3, todo.getTodoNo());
+			
+			result = pstmt.executeUpdate();
+	
+		} finally {
+			close(pstmt);			
+		}
+		return result;
+	}
+	
+	@Override
+	public int deleteTodo(Connection conn, int todoNo) throws SQLException {
+
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("deleteTodo");
+			
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, todoNo);
+			
+			result = pstmt.executeUpdate();
+	
+		} finally {
+			close(pstmt);			
+		}
 		return result;
 	}
 	

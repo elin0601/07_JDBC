@@ -57,8 +57,8 @@
     </table>
 
     <button id="goToList">목록으로</button>
-    <button id="udpateBtn">수정</button>
-    <button id="deleteBtn">삭제</button>
+    <button id="udpateBtn" data-todo-no="${todo.todoNo}">수정</button>
+    <button id="deleteBtn" data-todo-no="${todo.todoNo}">삭제</button>
 
      <c:if test="${not empty message}" >
         <script>

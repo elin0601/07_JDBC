@@ -20,8 +20,13 @@ public class Todo {
 		this.regDate = regDate;
 	}
 	
-	// getter / setter
 
+	public Todo(int todoNo, String todoTitle, String todoContent) {
+		super();
+		this.todoNo = todoNo;
+		this.todoTitle = todoTitle;
+		this.todoContent = todoContent;
+	}
 
 	
 	@Override
@@ -30,6 +35,7 @@ public class Todo {
 				+ complete + ", redDate=" + regDate + "]";
 	}
 
+	// getter / setter
 	public int getTodoNo() {
 		return todoNo;
 	}

@@ -9,32 +9,37 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
-@WebServlet("/todo/changeComplete")
-public class ChangeCompleteServlet extends HttpServlet {
+@WebServlet("/todo/delete")
+public class TodoDeleteServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
 		try {
 			TodoService service = new TodoServiceImpl();
 			
 			int todoNo = Integer.parseInt(req.getParameter("todoNo"));
-			String complete = req.getParameter("complete");
 			
-			int result = service.changeComplete(todoNo, complete);
+			int result = service.deleteTodo(todoNo);
 			
+			String path = null;
 			String message = null;
-			HttpSession session = req.getSession();
-			if(result > 0) message="변경 성공";
-			else message = "변경 실패";
 			
-			session.setAttribute("message", message);
-			
-			resp.sendRedirect("/todo/detail?todoNo=" + todoNo);
+			if(result > 0) { // 석제 성공
+				path = "/";
+				message = "삭제 되었습니다";
+				
+			} else { //  석제 실패
+				path = "/todo/detail?todoNo=" + todoNo;
+				message = "삭제 실패";
+			}
 		
-		} catch(Exception e) {
+			
+			req.getSession().setAttribute("message", message);
+			resp.sendRedirect(path);
+		
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		

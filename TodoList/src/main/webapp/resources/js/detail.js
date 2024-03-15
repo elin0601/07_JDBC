@@ -21,5 +21,24 @@ completeBtn.addEventListener("click", e => {
     complete = (complete ==='Y') ? 'N' : 'Y';
 
     // 완료 여부 수정 요청하기
-    location.href=`/todo/changrComplete?todoNo=${todoNo}&complete=${complete}`;
+    location.href=`/todo/changeComplete?todoNo=${todoNo}&complete=${complete}`;
 });
+
+// 수정 버튼 클릭 시
+const udpateBtn = document.querySelector("#udpateBtn");
+
+udpateBtn.addEventListener("click", e => {
+
+    // data-todo-no="${todo.todoNo} 얻어오기
+    const todoNo = e.target.dataset.todoNo;
+    location.href=`/todo/update?todoNo=${todoNo}`;
+});
+
+const deleteBtn = document.querySelector("#deleteBtn");
+
+deleteBtn.addEventListener("click", e => {
+
+    if(confirm("삭제 하시겠습니까?")){
+        location.href=`/todo/delete?todoNo=${e.target.dataset.todoNo}`;
+    }
+}); 

@@ -50,7 +50,11 @@ SET COMPLETE ='Y'
 WHERE TODO_NO = 1;
 
 
-
+-- 할 일 수정
+UPDATE TB_TODO SET
+TODO_TITLE = ?
+TODO_CONTENT = ?
+WHERE TODO_NO = ?;
 
 
 
