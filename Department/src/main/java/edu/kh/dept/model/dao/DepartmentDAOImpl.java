@@ -201,37 +201,47 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 		return result;
 	}
 	
+	
+	// 부서명 검색
 	@Override
 	public List<Department> searchDepartment(Connection conn, String keyword) throws SQLException {
 		
+		// 결과 저장용 변수/객체 생성
 		List<Department> deptList = new ArrayList<Department>();
 
 		
 		try {
 			
+			// SQL 얻어오기
 			String sql = prop.getProperty("searchDepartment");
 			
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, keyword);
 			
+			
+			// SQL(SELECT) 수행 후 결과(ResultSet) 반환 받기
 			rs = pstmt.executeQuery();
 			
+			// 조회 결과 한 행씩 접근해서 컬럼 값 모두 얻어오기
 			while (rs.next()) {
-				String deptId = rs.getString("DEPT_ID");
-				String deptTitle = rs.getString("DEPT_TITLE");
-				String locationId = rs.getString("LOCATION_ID");
+				String deptId = rs.getString(1); // 조회 결과 컬럼 순서 (1번 컬럼)
+				String deptTitle = rs.getString(2); // 조회 결과 컬럼 순서 (2번 컬럼)
+				String locationId = rs.getString(3); // 조회 결과 컬럼 순서 (3번 컬럼)
+				// -> 조회 결과를 컬럼 순서로 조회하면 나중에 SQL문을 수정할 때 순서가 바뀔 수도 있기 때문에 굳이,,? 사용하지 않음
 
 				Department dept = new Department(deptId, deptTitle, locationId);
 
-				deptList.add(dept);
+				deptList.add(dept); // deptList에 dept 를 추가
 			}
 			
 			
 		} finally {
+			
 			close(rs);
 			close(pstmt);
 		}
+		
 		return deptList;
 	}
 }

@@ -27,11 +27,13 @@
 		WHERE DEPT_ID = ?
 	 </entry>
 	 
+	 <!-- 부서 수정 -->
 	 <entry key = "updateDepartment">
 	  UPDATE DEPARTMENT4 SET DEPT_TITLE = ?, LOCATION_ID = ?
 	  WHERE DEPT_ID =?
 	 </entry>
 	 
+	 <!-- 부서명 검색 -->
 	 <entry key = "searchDepartment">
 	 	SELECT * FROM DEPARTMENT4
 	  WHERE DEPT_TITLE LIKE '%' || ? || '%'
