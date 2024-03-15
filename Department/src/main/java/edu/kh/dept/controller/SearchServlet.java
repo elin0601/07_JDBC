@@ -20,33 +20,34 @@ public class SearchServlet extends HttpServlet {
 		
 		try {
 			
-			DepartmentService service = new DepartmentServiceImpl();
+			 DepartmentService service = new DepartmentServiceImpl();
 			
 			String keyword = req.getParameter("keyword"); // 검색어
 			
 			List<Department> deptList = service.searchDepartment(keyword);
 			
 			// forward 할 jsp 경로			
-			/*
-			 * if (deptList.isEmpty()) { 
-			 * req.getSession().setAttribute("message", "해당 부서가 존재 하지 않습니다");
-			 * resp.sendRedirect("/department/selectAll");
-			 * 
-			 * } else {
-			 * 
-			 * // 조회 결과를 request scope에 속성으로 세팅 
-			 * req.setAttribute("deptList", deptList);
-			 * 
-			 * String path = "/WEB-INF/views/search.jsp";
-			 * 
-			 * // 요청 위임 
-			 * req.getRequestDispatcher(path).forward(req, resp); 
-			 * }
-			 */
 			
-			req.setAttribute("deptList", deptList);
+			  if (deptList.isEmpty()) { 
+			  req.getSession().setAttribute("message", "해당 부서가 존재 하지 않습니다");
+			  resp.sendRedirect("/department/selectAll");
+			  
+			  } else {
+			 
+			  // 조회 결과를 request scope에 속성으로 세팅 
+			  req.setAttribute("deptList", deptList);
+			  
+			  String path = "/WEB-INF/views/search.jsp";
+			  
+			 // 요청 위임 
+			  req.getRequestDispatcher(path).forward(req, resp); 
+			  
+			  }
+			 
+			
+			/* req.setAttribute("deptList", deptList);
 			String path = "/WEB-INF/views/search.jsp";
-			req.getRequestDispatcher(path).forward(req, resp); 
+			req.getRequestDispatcher(path).forward(req, resp); */
 			
 		} catch (Exception e) {
 			e.printStackTrace();
