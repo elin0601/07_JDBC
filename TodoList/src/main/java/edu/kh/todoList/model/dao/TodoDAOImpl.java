@@ -122,5 +122,39 @@ public class TodoDAOImpl implements TodoDAO {
 		return result;
 	}
 	
+	// 할 일 상세 조회
+	@Override
+	public Todo selectTodo(Connection conn, int todoNo) throws SQLException {
+		
+		// 결과 저장용 변수 선언/객체 선언
+		Todo todo = null;
+		
+		try {
+			String sql = prop.getProperty("selectTodo");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, todoNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { // 조회 결과가 있어도 1행 밖에 없음 == if 사용이 효율적
+				
+				todo = new Todo();
+				
+				todo.setTodoNo(rs.getInt("TODO_NO"));
+				todo.setTodoTitle(rs.getString("TODO_TITLE"));
+				todo.setTodoContent(rs.getString("TODO_CONTENT"));
+				todo.setComplete(rs.getString("COMPLETE"));
+				todo.setRegDate(rs.getString("REG_DATE"));
+			}
+
+		} finally {
+			close(rs);
+			close(pstmt);
+	
+		}
+		
+		return todo;
+	}
 	
 }

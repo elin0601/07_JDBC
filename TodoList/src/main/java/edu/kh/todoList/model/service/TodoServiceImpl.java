@@ -66,4 +66,18 @@ public class TodoServiceImpl implements TodoService {
 		return result;
 	}
 	
+	
+	// 할 일 상세 조회
+	@Override
+	public Todo selectTodo(int todoNo) throws SQLException {
+
+		Connection conn = getConnection();
+		
+		Todo todo = dao.selectTodo(conn, todoNo);
+		
+		close(conn);
+		
+		return todo;
+	}
+	
 }

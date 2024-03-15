@@ -11,6 +11,7 @@
  	<entry key="getCompleteCount">
 	 	SELECT COUNT(*)
 		FROM TB_TODO 
+		WHERE COMPLETE='Y'
  	</entry>
  	
  	<entry key="addTodo">
@@ -18,4 +19,10 @@
  		VALUES(SEQ_TODO_NO.NEXTVAL, ?, ?, DEFAULT, DEFAULT)
  	</entry>
 
+	<entry key="selectTodo">
+		SELECT TODO_NO, TODO_TITLE, TODO_CONTENT  , COMPLETE, TO_CHAR(REG_DATE, 'YYYY-MM-DD HH24:MI:SS') "REG_DATE"
+		FROM TB_TODO
+		WHERE TODO_NO = ?
+	</entry>
+	
 </properties>

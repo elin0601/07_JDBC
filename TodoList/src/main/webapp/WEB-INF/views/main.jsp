@@ -52,7 +52,9 @@
       <c:forEach items="${todoList}" var="todo">
         <tr>
           <td>${todo.todoNo}</td>
-          <td>${todo.todoTitle}</td>
+          <td>
+            <a href="/todo/detail?todoNo=${todo.todoNo}">${todo.todoTitle}</a>
+          </td>
           <td>${todo.complete}</td>
           <td>${todo.regDate}</td>
         </tr>

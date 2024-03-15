@@ -34,5 +34,14 @@ public interface TodoDAO {
 	int addTodo(Connection conn, String todoTitle, String todoContent) throws SQLException;
 
 
+	/** 할 일 상세 조회
+	 * @param conn
+	 * @param todoNo
+	 * @return todo(조회 결과가 없으면 null)
+	 * @throws SQLException
+	 */
+	Todo selectTodo(Connection conn, int todoNo) throws SQLException;
+
+
 
 }
