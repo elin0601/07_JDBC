@@ -71,5 +71,4 @@ public interface TodoDAO {
 	int deleteTodo(Connection conn, int todoNo) throws SQLException;
 
 
-
 }

@@ -29,17 +29,17 @@ public class TodoDetailServlet extends HttpServlet{
 			Todo todo = service.selectTodo(todoNo);
 			
 			// 조회 결과에 따라 응답 제어
-			if(todo != null) { // 조회 결과가 있을 경우
+			if (todo != null) { // 조회 결과가 있을 경우
 				req.setAttribute("todo", todo);
 				String path = "/WEB-INF/views/detail.jsp";
 				req.getRequestDispatcher(path).forward(req, resp);
-				
+
 			} else { // 조회 결과가 없을 경우
-							 // -> 파라미터로 전달 받은 todoNo가 DB에 존재하지 않음
+								// -> 파라미터로 전달 받은 todoNo가 DB에 존재하지 않음
 				req.getSession().setAttribute("message", "해당 할 일이 존재하지 않습니다");
-				
-				resp.sendRedirect("/");	
-			}		
+
+				resp.sendRedirect("/");
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

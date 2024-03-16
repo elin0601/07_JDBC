@@ -62,7 +62,6 @@ public class TodoUpdateServlet extends HttpServlet {
 			// 파라미터를 Todo를 이용해서 묶기
 			Todo todo = new Todo(todoNo, todoTitle, todoContent);
 			
-			
 			// 서비스 메서드 호출 후 결과 반환 받기
 			int result = service.updateTodo(todo);
 			

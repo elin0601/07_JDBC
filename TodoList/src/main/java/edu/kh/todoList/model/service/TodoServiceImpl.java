@@ -50,7 +50,7 @@ public class TodoServiceImpl implements TodoService {
 		return map;
 	}
 	
-	
+	// 할 일 추가
 	@Override
 	public int addTodo(String todoTitle, String todoContent) throws SQLException {
 		
@@ -80,6 +80,7 @@ public class TodoServiceImpl implements TodoService {
 		return todo;
 	}
 	
+	// 할 일 완료 여부 수정
 	@Override
 	public int changeComplete(int todoNo, String complete) throws SQLException {
 		

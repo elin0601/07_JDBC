@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+// 할 일 삭제
 @WebServlet("/todo/delete")
 public class TodoDeleteServlet extends HttpServlet {
 	
@@ -35,7 +36,7 @@ public class TodoDeleteServlet extends HttpServlet {
 				message = "삭제 실패";
 			}
 		
-			
+			// 세션 생성 및 속성 부여
 			req.getSession().setAttribute("message", message);
 			resp.sendRedirect(path);
 		

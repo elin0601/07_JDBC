@@ -100,7 +100,7 @@ public class TodoDAOImpl implements TodoDAO {
 		return completeCount;		
 	}
 
-	
+	// 할 일 추가
 	@Override
 	public int addTodo(Connection conn, String todoTitle, String todoContent) throws SQLException{
 		
@@ -201,6 +201,7 @@ public class TodoDAOImpl implements TodoDAO {
 		return result;
 	}
 	
+	// 할 일 삭제
 	@Override
 	public int deleteTodo(Connection conn, int todoNo) throws SQLException {
 

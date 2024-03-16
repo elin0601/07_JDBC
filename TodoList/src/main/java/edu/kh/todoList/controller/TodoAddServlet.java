@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/todo/add")
 public class TodoAddServlet extends HttpServlet{
 
+	// 할 일 추가
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
