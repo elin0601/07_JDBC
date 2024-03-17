@@ -16,7 +16,7 @@ public class JDBCExample6 {
 		Connection conn = null;
 		
 		// PreparedStatement (준비된 Statement)
-		// - 외부 변수 값을 SQL에 받아들릴 준비가 되어있는 Statement
+		// - 외부 변수 값을 SQL에 받아들일 준비가 되어있는 Statement
 		// - 성능, 속도면에서 우위를 가지고 있음
 		
 		// - ? (placeholder) : 변수/값을 위치 시킬 자리 지정		
