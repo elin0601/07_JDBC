@@ -11,6 +11,8 @@
 
     <h3>${student.studentName}님의 정보 수정</h3>
     <form action="/student/update" method="POST">
+        <input type="hidden" name="studentNo" value = "${student.studentNo}">
+        
         <div>
             학생 학과 : <input type="text" name="studentDept" value = "${student.studentDept}">
         </div>
@@ -21,22 +23,29 @@
             학생 학점 : <input type="number" name="point" value = "${student.point}">
         </div>
         <div>
-            휴학 여부 : <input type="text" name="absenceYn" value = "${student.absenceYn}">
+            휴학 여부 : <button type="button"
+                                class = "absenceYn"
+                                data-student-no="${student.studentNo}">
+                                ${student.absenceYn}</button>
+        </div>
         </div>
         <div>
-            휴학 날짜 : <input type="text" name="absenceDate" value = "${student.absenceDate}">
+            휴학 날짜 : <input type="date" name="absenceDate" value = "${student.absenceDate}">
         </div>
         <div>
-            졸업 여부 : <input type="text" name="graduationYn" value = "${student.graduationYn}">
+            졸업 여부 :  <button type="button"
+                                class = "graduationYn"
+                                data-student-no="${student.studentNo}">
+                                ${student.graduationYn}</button>
         </div>
         <div>
-            졸업 날짜 : <input type="text" name="graduationDate" value = "${student.graduationDate}">
+            졸업 날짜 : <input type="date" name="graduationDate" value = "${student.graduationDate}">  
         </div>
 
-
+        <input type="hidden" name="studentNo" value="${param.studentNo}">
+        <button>수정하기</button>
+    
     </form>
-    
-    
 
     <c:if test="${not empty message}" >
         <script>
@@ -44,6 +53,8 @@
         </script>
         <c:remove var="message"/>
     </c:if>
+
+    <script src="/resources/js/insert.js"></script>d
 
 </body>
 </html>

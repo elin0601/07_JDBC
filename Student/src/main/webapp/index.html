@@ -6,11 +6,18 @@
     <title>학생 정보 관리 프로그램</title>
 </head>
 <body>
+    <div>
+        <a href="/student/selectAll">학생 정보 조회</a>
+    </div>
 
-    <ul>
-        <li>
-            <a href="/student/selectAll">학생 정보 조회</a>
-        </li>
-    </ul>
+    <div> 
+        <a href="/student/insert">학생 추가하기</a>
+    </div>
+
+    <h3>검색하기</h3>
+    <form action="/student/search" method="GET">
+        검색어 입력 : <input type="text" name="studentNo">
+        <button>검색</button>
+    </form>
 </body>
 </html>

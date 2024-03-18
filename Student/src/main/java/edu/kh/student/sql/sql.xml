@@ -11,12 +11,10 @@
 	
 	<entry key="update">
 		UPDATE TB_STUDENT SET
-		STUDENT_DEPT = ?
-		ADDRESS = ?
-		POINT = ?
-		ABSENCE_YN =?
-		ABSENCE_DATE = ?
-		GRADUATION_YN = ?
+		STUDENT_DEPT = ?,
+		ADDRESS = ?,
+		POINT = ?,
+		ABSENCE_DATE = ?,
 		GRADUATION_DATE = ?
 		WHERE STUDENT_NO =?
 	</entry>
@@ -28,5 +26,28 @@
 		FROM TB_STUDENT
 		WHERE STUDENT_NO = ?
 	</entry>
+	
+	<entry key="delete">
+		DELETE FROM TB_STUDENT
+		WHERE STUDENT_NO = ?
+	</entry>
+	
+	<entry key="insert">
+		INSERT INTO TB_STUDENT
+		VALUES(?, ?, ?, ?, ?, ?, ?, DEFAULT, ?, DEFAULT, ?)
+	</entry>
+	
+	<entry key="change">
+		UPDATE TB_STUDENT
+		SET ABSENCE_YN = ?
+		WHERE STUDENT_NO = ?
+	</entry>
+	
+	<entry key="search">
+		SELECT * FROM TB_STUDENT
+	  WHERE STUDENT_NO LIKE '%' || ? || '%' 
+	</entry>
+	
+	
 	
 </properties>

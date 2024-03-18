@@ -14,4 +14,14 @@ public interface StudentDAO {
 
 	Student selectStudent(Connection conn, String studentNo) throws SQLException;
 
+	int delete(Connection conn, String studentNo) throws SQLException;
+
+	int insert(Connection conn, Student student) throws SQLException;
+
+	int change(Connection conn, String studentNo, String change) throws SQLException;
+
+	int changeOther(Connection conn, String studentNo, String changeOther) throws SQLException;
+
+	List<Student> search(Connection conn, String studentNo) throws SQLException;
+
 }

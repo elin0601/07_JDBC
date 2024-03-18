@@ -6,12 +6,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>학생관리</title>
+    <title>${param.studentNo} 학번 조회 결과</title>
 </head>
 <body>
-    <h1>전체 학생 조회</h1>
+    <h2>${param.studentNo} 학번 조회 결과</h2>
 
-    <table border="1">
+    <c:if test="${empty studentList}">
+        <h3>해당 학생의 조회 결과가 없습니다.</h3>
+    </c:if>
+
+    <c:if test="${not empty studentList}">
+        <table border="1">
         <thead>
             <tr>
                 <th>순서</th>
@@ -44,30 +49,12 @@
                     <td>${student.absenceDate}</td>
                     <td>${student.graduationYn}</td>
                     <td>${student.graduationDate}</td>
-
-                   <th>
-                        <button type = "button" class = "update-btn">학생 정보 수정<button>
-                    </th>
-                    
-                    <th>
-                        <button type = "button" class = "delete-btn">학생 정보 삭제</button>
-                    </th>
-
-                </tr> 
-         </c:forEach>
+                </tr>
+             </c:forEach>
         </tbody>
     </table>
+</c:if>
 
-    <c:if test="${not empty message}" >
-        <script>
-            alert("${message}");
-        </script>
-        <c:remove var="message"/>
-    </c:if>
-
-    <c:remove var="message" scope="session" />
-
-    <script src = "/resources/js/selectAll.js"></script>
-
+    
 </body>
 </html>

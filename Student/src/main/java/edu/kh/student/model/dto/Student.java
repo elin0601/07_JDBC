@@ -94,8 +94,8 @@ public class Student {
 		this.point = point;
 	}
 
-	public double getEntranceDate() {
-		return point;
+	public String getEntranceDate() {
+		return entranceDate;
 	}
 	
 	

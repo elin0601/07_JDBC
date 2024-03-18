@@ -77,16 +77,15 @@ public class StudentDAOImpl implements StudentDAO {
 			String sql = prop.getProperty("update");
 			
 			pstmt = conn.prepareStatement(sql);
-			result = pstmt.executeUpdate();
 			
 			pstmt.setString(1, student.getStudentDept());
 			pstmt.setString(2, student.getAddress());
 			pstmt.setDouble(3, student.getPoint());
-			pstmt.setString(4, student.getAbsenceYn());
-			pstmt.setString(5, student.getAbsenceDate());
-			pstmt.setString(6, student.getGraduationYn());
-			pstmt.setString(7, student.getGraduationDate());
-			pstmt.setString(8, student.getStudentNo());
+			pstmt.setString(4, student.getAbsenceDate());
+			pstmt.setString(5, student.getGraduationDate());
+			pstmt.setString(6, student.getStudentNo());
+			
+			result = pstmt.executeUpdate();
 			
 			
 		} finally {
@@ -107,7 +106,7 @@ public class StudentDAOImpl implements StudentDAO {
 			String sql = prop.getProperty("selectStudent");
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "studentNo");
+			pstmt.setString(1, studentNo);
 			
 			rs = pstmt.executeQuery();
 			
@@ -134,5 +133,143 @@ public class StudentDAOImpl implements StudentDAO {
 		}
 		return student;
 	}
+		
+	
+	@Override
+	public int delete(Connection conn, String studentNo) throws SQLException {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("delete");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, studentNo);
+			
+			result=pstmt.executeUpdate();
+			
+			
+		} finally {
+			
+			close(pstmt);
+			
+		}
+		return result;
+	}
+	
+	
+	@Override
+	public int insert(Connection conn, Student student) throws SQLException {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("insert");
+			
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, student.getStudentNo());
+			pstmt.setString(2, student.getStudentName());
+			pstmt.setString(3, student.getStudentDept());
+			pstmt.setString(4, student.getStudentSsn());
+			pstmt.setString(5, student.getAddress());
+			pstmt.setDouble(6, student.getPoint());
+			pstmt.setString(7, student.getEntranceDate());
+			pstmt.setString(8, student.getAbsenceDate());
+			pstmt.setString(9, student.getGraduationDate());
+			
+			
+			result=pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+			
+		}
+		return result;
+	}
+	
+	@Override
+	public int change(Connection conn, String studentNo, String change) throws SQLException {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("change");
+			
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, change);
+			pstmt.setString(2, studentNo);
+			
+			result=pstmt.executeUpdate();
+			
+			
+		} finally {
+			close(pstmt);
+			
+		}
+		return result;
+	}
 
+	
+	@Override
+	public int changeOther(Connection conn, String studentNo, String changeOther) throws SQLException {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("changeOther");
+			
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, changeOther);
+			pstmt.setString(2, studentNo);
+			
+			result=pstmt.executeUpdate();
+			
+			
+		} finally {
+			close(pstmt);
+			
+		}
+		return result;
+	}
+	
+	@Override
+	public List<Student> search(Connection conn, String studentNo) throws SQLException {
+		
+		List<Student> studentList = new ArrayList<Student>();
+		
+		try {
+			String sql = prop.getProperty("search");
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, studentNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				String studentNo1= rs.getString("STUDENT_NO");
+				String studentName = rs.getString("STUDENT_NAME");
+				String studentDept = rs.getString("STUDENT_DEPT");
+				String stustudentSsn = rs.getString("STUDENT_SSN");
+				String address = rs.getString("ADDRESS");
+				double point = rs.getDouble("POINT");
+				String entranceDate = rs.getString("ENTRANCE_DATE");
+				String absenceYn = rs.getString("ABSENCE_YN");
+				String absenceDate = rs.getString("ABSENCE_DATE");
+				String graduationYn = rs.getString("GRADUATION_YN");
+				String graduationDate = rs.getString("GRADUATION_DATE");
+				
+				Student studnet = new Student(studentNo1, studentName, studentDept, stustudentSsn, address, point, entranceDate, absenceYn, absenceDate, graduationYn, graduationDate);
+				studentList.add(studnet);
+				
+			}	
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+			
+		}
+		
+		return studentList;
+	}
 }
