@@ -9,6 +9,12 @@
     <title>${param.studentNo} 학번 조회 결과</title>
 </head>
 <body>
+   <h3>검색하기</h3>
+    <form action="/student/search" method="GET">
+        검색어 입력 : <input type="text" name="studentNo">
+        <button>검색</button>
+    </form>
+
     <h2>${param.studentNo} 학번 조회 결과</h2>
 
     <c:if test="${empty studentList}">
