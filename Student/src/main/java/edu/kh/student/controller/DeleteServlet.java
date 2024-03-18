@@ -31,7 +31,7 @@ public class DeleteServlet extends HttpServlet {
 			else message = "삭제 실패";
 			
 			session.setAttribute("message", message);
-			resp.sendRedirect("/student/update");
+			resp.sendRedirect("/student/selectAll");
 
 		} catch (Exception e) {
 			e.printStackTrace();

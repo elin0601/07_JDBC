@@ -29,7 +29,7 @@ public class InsertServlet extends HttpServlet{
 		try {
 			StudentService service = new StudentServiceImpl();
 			
-			String studentNo = req.getParameter("stdentNo");
+			String studentNo = req.getParameter("studentNo");
 			String studentName = req.getParameter("studentName");
 			String studentDept = req.getParameter("studentDept");
 			String studentSsn = req.getParameter("studentSsn");

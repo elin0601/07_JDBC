@@ -14,14 +14,14 @@
         </div>
 
         <div>
-            학생 이름 : <input type="text" name="studentNo">
+            학생 이름 : <input type="text" name="studentName">
         </div>
         <div>
             학과 : <input type="text" name="studentDept">
         </div>
 
         <div>
-            생년월일 : <input type="date" name="studentNo">
+            생년월일 : <input type="date" name="studentSsn">
         </div>
 
         <div>
@@ -36,7 +36,7 @@
             입학일 : <input type="date" name="entranceDate">
         </div>
 
-        <div>
+        <%-- <div>
             휴학 여부 : <button type="button"
                                 class = "absenceYn"
                                 data-student-no="${student.studentNo}">
@@ -57,7 +57,7 @@
         <div>
             졸업 날짜 : <input type="date" name="graduationDate">
         </div>
-
+ --%>
         <button type="submit">추가 하기</button>
 
     </form>
