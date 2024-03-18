@@ -64,7 +64,7 @@ public class MultiInsertServlet extends HttpServlet {
 
 		} catch (DepartmentInsertException e) {
 
-			// PK 제약 조건 위배 ㅛㅣ
+			// PK 제약 조건 위배 시
 
 			req.setAttribute("errorMessage", e.getMessage());
 
