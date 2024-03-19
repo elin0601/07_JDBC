@@ -76,6 +76,6 @@ SELECT * FROM TB_STUDENT
 WHERE STUDENT_NO LIKE '%' || '22' || '%' ;
 
 -- 학점 세분화 컬럼 추가
-
-
+ALTER TABLE TB_STUDENT 
+ADD ();
 
