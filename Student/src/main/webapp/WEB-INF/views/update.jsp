@@ -7,6 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>학생 정보 수정</title>
 </head>
+
+<style>
+  body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px
+       }
+</style>
 <body>
 
     <h3>${student.studentName}님의 정보 수정</h3>
@@ -20,7 +30,7 @@
             학생 주소 : <input type="text" name="address" value = "${student.address}">
         </div>
         <div>
-            학생 학점 : <input type="number" name="point" value = "${student.point}">
+            학생 학점 : <input type="number" name="point" value = "${student.point}"  min="1.0" max="4.5" step="0.1">
         </div>
         <div>
             휴학 여부 : <button type="button"
@@ -43,6 +53,7 @@
         </div>
 
         <input type="hidden" name="studentNo" value="${param.studentNo}">
+        <br>
         <button>수정하기</button>
     
     </form>

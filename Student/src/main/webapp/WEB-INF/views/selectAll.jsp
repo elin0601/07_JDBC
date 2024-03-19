@@ -8,6 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>학생관리</title>
 </head>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+       }
+</style>
 <body>
     <h1>전체 학생 조회</h1>
 
@@ -46,11 +54,11 @@
                     <td>${student.graduationDate}</td>
 
                    <th>
-                        <button type = "button" class = "update-btn">학생 정보 수정<button>
-                    </th>
+                   <button type = "button" class = "update-btn">학생 정보 수정<button>
+                   </th>
                     
                     <th>
-                        <button type = "button" class = "delete-btn">학생 정보 삭제</button>
+                        <button type = "button" class = "delete-btn">삭제</button>
                     </th>
 
                 </tr> 
@@ -58,7 +66,8 @@
         </tbody>
     </table>
 
- <button id="goToList">목록</button>
+<br>
+ <button id="goToList">목록으로</button>
     <c:if test="${not empty message}" >
         <script>
             alert("${message}");

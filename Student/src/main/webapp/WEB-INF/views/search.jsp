@@ -8,6 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${param.studentNo} 학번 조회 결과</title>
 </head>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+       }
+</style>
+
 <body>
    <h3>검색하기</h3>
     <form action="/student/search" method="GET">
@@ -60,8 +69,8 @@
         </tbody>
     </table>
     </c:if>
-
- <button id="goToList">목록</button>
+<br>
+ <button id="goToList">목록으로</button>
 
   <script src = "/resources/js/selectAll.js"></script>
 
