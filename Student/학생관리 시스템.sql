@@ -72,13 +72,10 @@ DELETE FROM TB_STUDENT
 WHERE STUDENT_NO = ?;
 
 
+SELECT * FROM TB_STUDENT
+WHERE STUDENT_NO LIKE '%' || '22' || '%' ;
 
-		SELECT * FROM TB_STUDENT
-	  WHERE STUDENT_NO LIKE '%' || '22' || '%' ;
+-- 학점 세분화 컬럼 추가
 
-
-
-
-s
 
 

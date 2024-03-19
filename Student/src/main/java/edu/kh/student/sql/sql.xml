@@ -52,14 +52,9 @@
 	
 	<entry key="search">
 		SELECT * FROM TB_STUDENT
-	  WHERE STUDENT_NO LIKE '%' || ? || '%'
+	  WHERE STUDENT_NO LIKE '%' || ? || '%' OR STUDENT_NAME  LIKE  '%' || ? || '%' OR 
+	  			STUDENT_DEPT LIKE '%' || ? || '%'
 	</entry>
-	
-	<entry key="searchName">
-		SELECT * FROM TB_STUDENT
-	  WHERE STUDENT_NAME LIKE '%' || ? || '%'
-	</entry>
-	
-	
+
 	
 </properties>

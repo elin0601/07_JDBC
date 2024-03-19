@@ -24,7 +24,7 @@
         <button>검색</button>
     </form>
 
-    <h2>${param.studentNo} 학번 조회 결과</h2>
+    <h2>${param.studentNo} 조회 결과</h2>
 
     <c:if test="${empty studentList}">
         <h3>해당 학생의 조회 결과가 없습니다.</h3>

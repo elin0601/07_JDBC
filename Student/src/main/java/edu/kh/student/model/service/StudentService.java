@@ -24,7 +24,4 @@ public interface StudentService {
 
 	List<Student> search(String studentNo) throws SQLException;
 
-	List<Student> searchName(String studentName) throws SQLException;
-	
-
 }
