@@ -33,6 +33,21 @@ public class Student {
 		this.graduationYn = graduationYn;
 		this.graduationDate = graduationDate;
 	}
+	
+	
+
+
+	public Student(String studentNo, String studentName, String studentDept, String studentSsn, String address,
+			double point, String entranceDate) {
+		super();
+		this.studentNo = studentNo;
+		this.studentName = studentName;
+		this.studentDept = studentDept;
+		this.studentSsn = studentSsn;
+		this.address = address;
+		this.point = point;
+		this.entranceDate = entranceDate;
+	}
 
 
 	public String getStudentNo() {

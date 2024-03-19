@@ -26,7 +26,7 @@ public class SearchServlet extends HttpServlet{
 			
 			if(studentList.isEmpty()) {
 				req.getSession().setAttribute("message", "조회된 학생이 없습니다.");
-				resp.sendRedirect("/studnet/seletAll");
+				resp.sendRedirect("/student/selectAll");
 			} else {
 				req.setAttribute("studentList", studentList);
 				

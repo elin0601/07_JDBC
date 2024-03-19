@@ -58,7 +58,7 @@ public class DepartmentServiceImpl implements DepartmentService{
 		try {
 			
 			// 2. DAO 메서드 호출 후 결과 반환
-			// (DAO 메서드 수행 시 커넥션이 필요하기 때문에 배개면수로 전달!!)
+			// (DAO 메서드 수행 시 커넥션이 필요하기 때문에 매개변수로 전달!!)
 			result = dao.insertDepartment(conn, dept);
 			
 			// 3. DAO 수행 결과에 따라 트랜잭션 제어

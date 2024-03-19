@@ -9,6 +9,7 @@
 <body>
     <h3>학생 정보 추가</h3>
     <form action="insert" method = "POST">
+
         <div>
             학생 번호 : <input type="text" name="studentNo">
         </div>
@@ -29,40 +30,22 @@
         </div>
 
         <div>
-            학점 : <input type="number" name="point">
+            이번 학기 학점 : <input type="number" name="point" min="1" max="4.5">
         </div>
 
         <div>
             입학일 : <input type="date" name="entranceDate">
         </div>
 
-        <%-- <div>
-            휴학 여부 : <button type="button"
-                                class = "absenceYn"
-                                data-student-no="${student.studentNo}">
-                                ${student.absenceYn}</button>
-        </div>
-
-        <div>
-            휴학 날짜 : <input type="date" name="absenceDate">
-        </div>
-
-        <div>
-            졸업 여부 : <button type="button"
-                                class = "graduationYn"
-                                data-student-no="${student.studentNo}">
-                                ${student.graduationYn}</button>
-        </div>
-
-        <div>
-            졸업 날짜 : <input type="date" name="graduationDate">
-        </div>
- --%>
         <button type="submit">추가 하기</button>
 
     </form>
 
-    <script src="/resources/js/insert.js"></script>
-
+        <c:if test="${not empty message}" >
+        <script>
+            alert("${message}");
+        </script>
+        <c:remove var="message"/>
+    </c:if>
 </body>
 </html>

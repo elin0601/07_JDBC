@@ -46,15 +46,16 @@
         <button>수정하기</button>
     
     </form>
-
-    <c:if test="${not empty message}" >
+    
+     <c:if test="${not empty message}" >
         <script>
             alert("${message}");
         </script>
+
         <c:remove var="message"/>
     </c:if>
 
-    <script src="/resources/js/insert.js"></script>d
+    <script src="/resources/js/insert.js"></script>
 
 </body>
 </html>

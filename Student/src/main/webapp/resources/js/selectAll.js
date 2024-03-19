@@ -1,3 +1,12 @@
+
+// 목록으로 버튼 동작
+const goToList = document.querySelector("#goToList");
+
+goToList.addEventListener("click", () => {
+    location.href="/"; // 메인 페이지 요청
+});
+
+
 const updateBtnList = document.querySelectorAll(".update-btn");
 updateBtnList.forEach((btn,index) => {
 

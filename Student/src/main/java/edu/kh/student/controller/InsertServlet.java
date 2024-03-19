@@ -36,12 +36,9 @@ public class InsertServlet extends HttpServlet{
 			String address = req.getParameter("address");
 			double point = Double.parseDouble(req.getParameter("point"));
 			String entranceDate = req.getParameter("entranceDate");
-			String absenceYn = req.getParameter("absenceYn");
-			String absenceDate = req.getParameter("absenceDate");
-			String graduationYn = req.getParameter("graduationYn");
-			String graduationDate = req.getParameter("absenceDate");
+
 			
-			Student student = new Student(studentNo, studentName, studentDept, studentSsn, address, point, entranceDate, absenceYn, absenceDate, graduationYn, graduationDate);
+			Student student = new Student(studentNo, studentName, studentDept, studentSsn, address, point, entranceDate);
 			
 			int result = service.insert(student);
 			

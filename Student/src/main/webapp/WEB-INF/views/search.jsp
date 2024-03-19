@@ -59,7 +59,11 @@
              </c:forEach>
         </tbody>
     </table>
-</c:if>
+    </c:if>
+
+ <button id="goToList">목록</button>
+
+  <script src = "/resources/js/selectAll.js"></script>
 
     
 </body>

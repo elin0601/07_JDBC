@@ -174,10 +174,7 @@ public class StudentDAOImpl implements StudentDAO {
 			pstmt.setString(5, student.getAddress());
 			pstmt.setDouble(6, student.getPoint());
 			pstmt.setString(7, student.getEntranceDate());
-			pstmt.setString(8, student.getAbsenceDate());
-			pstmt.setString(9, student.getGraduationDate());
-			
-			
+					
 			result=pstmt.executeUpdate();
 			
 		} finally {

@@ -20,7 +20,7 @@
                 <th>학과</th>
                 <th>생년월일</th>
                 <th>주소</th>
-                <th>학점</th>
+                <th>이번 학기 학점</th>
                 <th>입학 날짜</th>
                 <th>휴학 여부</th>
                 <th>휴학 날짜</th>
@@ -58,6 +58,7 @@
         </tbody>
     </table>
 
+ <button id="goToList">목록</button>
     <c:if test="${not empty message}" >
         <script>
             alert("${message}");
