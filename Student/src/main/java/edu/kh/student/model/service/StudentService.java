@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import edu.kh.student.model.dto.Student;
+import edu.kh.student.model.exception.StudentInsertException;
 
 public interface StudentService {
 

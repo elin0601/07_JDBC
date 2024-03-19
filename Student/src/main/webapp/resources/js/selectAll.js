@@ -6,7 +6,6 @@ goToList.addEventListener("click", () => {
     location.href="/"; // 메인 페이지 요청
 });
 
-
 const updateBtnList = document.querySelectorAll(".update-btn");
 updateBtnList.forEach((btn,index) => {
 

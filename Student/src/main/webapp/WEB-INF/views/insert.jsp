@@ -50,13 +50,19 @@
 
         <br>
         <button type="submit">추가 하기</button>
-
     </form>
+
+
         <c:if test="${not empty message}" >
         <script>
             alert("${message}");
         </script>
         <c:remove var="message"/>
     </c:if>
+
+    <br>
+    <button id="goToList">목록으로</button>
+
+    <script src = "/resources/js/selectAll.js"></script>
 </body>
 </html>

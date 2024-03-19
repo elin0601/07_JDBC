@@ -43,6 +43,13 @@
 		WHERE STUDENT_NO = ?
 	</entry>
 	
+	
+	<entry key="changeOther">
+		UPDATE TB_STUDENT
+		SET GRADUATION_YN = ?
+		WHERE STUDENT_NO = ?
+	</entry>
+	
 	<entry key="search">
 		SELECT * FROM TB_STUDENT
 	  WHERE STUDENT_NO LIKE '%' || ? || '%' 

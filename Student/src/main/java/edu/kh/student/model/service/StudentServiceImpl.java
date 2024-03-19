@@ -3,6 +3,7 @@ package edu.kh.student.model.service;
 import edu.kh.student.model.dao.StudentDAO;
 import edu.kh.student.model.dao.StudentDAOImpl;
 import edu.kh.student.model.dto.Student;
+import edu.kh.student.model.exception.StudentInsertException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -72,14 +73,15 @@ public class StudentServiceImpl implements StudentService {
 		int result = 0;
 		
 		Connection conn = getConnection();
-		
+	
 			result = dao.insert(conn, student);
 			
 			if(result > 0) commit(conn);
 			else rollback(conn);
 			
-			close(conn);	
-			
+	
+			close(conn);			
+				
 		return result;
 	}
 	

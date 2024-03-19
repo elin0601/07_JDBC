@@ -3,6 +3,7 @@ package edu.kh.student.controller;
 import java.io.IOException;
 
 import edu.kh.student.model.dto.Student;
+import edu.kh.student.model.exception.StudentInsertException;
 import edu.kh.student.model.service.StudentService;
 import edu.kh.student.model.service.StudentServiceImpl;
 import jakarta.servlet.ServletException;
@@ -55,9 +56,13 @@ public class InsertServlet extends HttpServlet{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			HttpSession session = req.getSession();
+			
+			session.setAttribute("message", "학생 정보가 입력되지 않았습니다");
+			resp.sendRedirect("/student/insert");
+			
 		}
 	
 	}
-	
 
 }
