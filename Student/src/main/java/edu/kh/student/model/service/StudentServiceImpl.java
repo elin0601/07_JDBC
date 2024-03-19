@@ -69,15 +69,17 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public int insert(Student student) throws SQLException {
 		
+		int result = 0;
+		
 		Connection conn = getConnection();
 		
-		int result = dao.insert(conn, student);
-		
-		if(result > 0) commit(conn);
-		else rollback(conn);
-		
-		close(conn);
-		
+			result = dao.insert(conn, student);
+			
+			if(result > 0) commit(conn);
+			else rollback(conn);
+			
+			close(conn);	
+			
 		return result;
 	}
 	
