@@ -12,18 +12,17 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/student/search")
-public class SearchServlet extends HttpServlet{
-	
+@WebServlet("/student/studentName")
+public class SearchNameServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String studentNo = req.getParameter("studentNo");
+		String studentName = req.getParameter("studentName");
 		
 		StudentService service = new StudentServiceImpl();
 		try {
 		
-			List<Student> studentList = service.search(studentNo);
+			List<Student> studentList = service.searchName(studentName);
 			
 			if(studentList.isEmpty()) {
 				req.getSession().setAttribute("message", "조회된 학생이 없습니다.");
@@ -31,7 +30,7 @@ public class SearchServlet extends HttpServlet{
 			} else {
 				req.setAttribute("studentList", studentList);
 				
-				String path = "/WEB-INF/views/search.jsp";
+				String path = "/WEB-INF/views/studentName.jsp";
 				
 				req.getRequestDispatcher(path).forward(req, resp);
 			}
@@ -41,5 +40,6 @@ public class SearchServlet extends HttpServlet{
 		}
 		
 	}
+
 
 }

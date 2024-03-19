@@ -245,7 +245,7 @@ public class StudentDAOImpl implements StudentDAO {
 			while(rs.next()) {
 				
 				String studentNo1= rs.getString("STUDENT_NO");
-				String studentName = rs.getString("STUDENT_NAME");
+				String studentName1 = rs.getString("STUDENT_NAME");
 				String studentDept = rs.getString("STUDENT_DEPT");
 				String stustudentSsn = rs.getString("STUDENT_SSN");
 				String address = rs.getString("ADDRESS");
@@ -256,7 +256,48 @@ public class StudentDAOImpl implements StudentDAO {
 				String graduationYn = rs.getString("GRADUATION_YN");
 				String graduationDate = rs.getString("GRADUATION_DATE");
 				
-				Student studnet = new Student(studentNo1, studentName, studentDept, stustudentSsn, address, point, entranceDate, absenceYn, absenceDate, graduationYn, graduationDate);
+				Student studnet = new Student(studentNo1, studentName1, studentDept, stustudentSsn, address, point, entranceDate, absenceYn, absenceDate, graduationYn, graduationDate);
+				studentList.add(studnet);
+				
+			}	
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+			
+		}
+		
+		return studentList;
+	}
+	
+	
+	@Override
+	public List<Student> searchName(Connection conn, String studentName) throws SQLException {
+
+List<Student> studentList = new ArrayList<Student>();
+		
+		try {
+			String sql = prop.getProperty("searchName");
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, studentName);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				String studentNo1= rs.getString("STUDENT_NO");
+				String studentName1 = rs.getString("STUDENT_NAME");
+				String studentDept = rs.getString("STUDENT_DEPT");
+				String stustudentSsn = rs.getString("STUDENT_SSN");
+				String address = rs.getString("ADDRESS");
+				double point = rs.getDouble("POINT");
+				String entranceDate = rs.getString("ENTRANCE_DATE");
+				String absenceYn = rs.getString("ABSENCE_YN");
+				String absenceDate = rs.getString("ABSENCE_DATE");
+				String graduationYn = rs.getString("GRADUATION_YN");
+				String graduationDate = rs.getString("GRADUATION_DATE");
+				
+				Student studnet = new Student(studentNo1, studentName1, studentDept, stustudentSsn, address, point, entranceDate, absenceYn, absenceDate, graduationYn, graduationDate);
 				studentList.add(studnet);
 				
 			}	
@@ -270,3 +311,4 @@ public class StudentDAOImpl implements StudentDAO {
 		return studentList;
 	}
 }
+	

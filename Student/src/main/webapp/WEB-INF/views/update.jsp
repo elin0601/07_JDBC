@@ -9,13 +9,13 @@
 </head>
 
 <style>
-  body {
+    body {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         padding: 30px
-       }
+    }
 </style>
 <body>
 
@@ -53,7 +53,6 @@
         </div>
 
         <input type="hidden" name="studentNo" value="${param.studentNo}">
-        <br>
         <button>수정하기</button>
     
     </form>

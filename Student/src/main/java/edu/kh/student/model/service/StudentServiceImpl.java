@@ -123,4 +123,15 @@ public class StudentServiceImpl implements StudentService {
 	
 		return studentList;
 	}
+	
+	@Override
+	public List<Student> searchName(String studentName) throws SQLException {
+		
+		Connection conn = getConnection();
+		
+		List<Student> studentList = dao.searchName(conn, studentName);
+		close(conn);
+	
+		return studentList;
+	}
 }

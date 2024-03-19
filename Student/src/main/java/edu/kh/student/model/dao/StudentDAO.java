@@ -24,4 +24,6 @@ public interface StudentDAO {
 
 	List<Student> search(Connection conn, String studentNo) throws SQLException;
 
+	List<Student> searchName(Connection conn, String studentName) throws SQLException;
+
 }

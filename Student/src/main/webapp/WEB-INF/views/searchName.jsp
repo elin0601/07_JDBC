@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>학생관리</title>
+    <title>조회 결과</title>
 </head>
 <style>
     body {
@@ -16,10 +16,22 @@
         justify-content: center;
        }
 </style>
-<body>
-    <h1>전체 학생 조회</h1>
 
-    <table border="1">
+<body>
+   <h3>검색하기</h3>
+    <form action="/student/searchName" method="GET">
+        검색어 입력 : <input type="text" name="studentName">
+        <button>검색</button>
+    </form>
+
+    <h2>${param.studentName} 조회 결과</h2>
+
+    <c:if test="${empty studentList}">
+        <h3>해당 학생의 조회 결과가 없습니다.</h3>
+    </c:if>
+
+    <c:if test="${not empty studentList}">
+        <table border="1">
         <thead>
             <tr>
                 <th>순서</th>
@@ -28,7 +40,7 @@
                 <th>학과</th>
                 <th>생년월일</th>
                 <th>주소</th>
-                <th>이번 학기 학점</th>
+                <th>학점</th>
                 <th>입학 날짜</th>
                 <th>휴학 여부</th>
                 <th>휴학 날짜</th>
@@ -52,32 +64,16 @@
                     <td>${student.absenceDate}</td>
                     <td>${student.graduationYn}</td>
                     <td>${student.graduationDate}</td>
-
-                   <th>
-                        <button type = "button" class = "update-btn">학생 정보 수정</button>
-                   </th>
-                    
-                    <th>
-                        <button type = "button" class = "delete-btn">삭제</button>
-                    </th>
-
-                </tr> 
-         </c:forEach>
+                </tr>
+             </c:forEach>
         </tbody>
     </table>
-
+    </c:if>
 <br>
  <button id="goToList">목록으로</button>
-    <c:if test="${not empty message}" >
-        <script>
-            alert("${message}");
-        </script>
-        <c:remove var="message"/>
-    </c:if>
 
-    <c:remove var="message" scope="session" />
+  <script src = "/resources/js/selectAll.js"></script>
 
-    <script src = "/resources/js/selectAll.js"></script>
-
+    
 </body>
 </html>

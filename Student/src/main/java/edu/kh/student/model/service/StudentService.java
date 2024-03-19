@@ -23,6 +23,8 @@ public interface StudentService {
 	int changeOther(String studentNo, String changeOther) throws SQLException;
 
 	List<Student> search(String studentNo) throws SQLException;
+
+	List<Student> searchName(String studentName) throws SQLException;
 	
 
 }

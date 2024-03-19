@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${param.studentNo} 학번 조회 결과</title>
+    <title> 조회 결과</title>
 </head>
 <style>
     body {
